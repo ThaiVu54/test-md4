@@ -1,5 +1,7 @@
 package com.example.demo1.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,7 +12,8 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(targetEntity = City.class)
+    @OneToMany(mappedBy = "country")
+    @JsonBackReference
     private List<City> cities;
 
 
